@@ -1,0 +1,20 @@
+version: 2
+
+sources:
+  - name: google_drive
+    database: LOAD
+    schema: GOOGLE_DRIVE
+    tables:
+      - name: expenses
+      - name: hr_joins
+      - name: hr_quits
+      - name: returns
+
+  - name: web
+    database: LOAD
+    schema: WEB_SCHEMA
+    tables:
+      - name: sessions
+      - name: page_views
+      - name: item_views
+      - name: orders
