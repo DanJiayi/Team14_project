@@ -9,9 +9,9 @@ renamed as (
         "ORDER_ID" as order_id,
         cast("RETURNED_AT" as date) as returned_at,
         
-        -- convert yes/no to boolean
+        -- convert yes/no to boolean with case-insensitive check
         case 
-            when "IS_REFUNDED" = 'yes' then true 
+            when lower("IS_REFUNDED") = 'yes' then true 
             else false 
         end as is_refunded
         
