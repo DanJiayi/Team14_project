@@ -37,7 +37,7 @@ clean-targets:         # directories to be removed by `dbt clean`
 
 models:
   Team14_project:
-    base:
+    staging:
       +materialized: view
       +schema: BASE
     intermediate:
