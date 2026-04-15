@@ -13,9 +13,8 @@ renamed as (
         case 
             when "IS_REFUNDED" = 'yes' then true 
             else false 
-        end as is_refunded,
+        end as is_refunded
         
-        "_FIVETRAN_SYNCED" as synced_at
     from source
 )
 

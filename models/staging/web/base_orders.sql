@@ -6,6 +6,7 @@ with source as (
 
 renamed as (
     select
+        "_fivetran_id" as fivetran_id,
         "ORDER_ID" as order_id,
         "SESSION_ID" as session_id,
         "CLIENT_NAME" as client_name,
@@ -16,12 +17,10 @@ renamed as (
         
         "TAX_RATE" as tax_rate,
         cast("ORDER_AT" as timestamp) as order_at,
-        "PAYMENT_METHOD" as payment_method,
+        "PAYMENT_METHOD" as payment_method
         
-        -- metadata columns from fivetran
-        "_fivetran_synced" as synced_at,
-        "_fivetran_deleted" as is_deleted
     from source
+    where "_fivetran_deleted" = false
 )
 
 select * from renamed
