@@ -1,0 +1,21 @@
+{{ config(materialized='view') }}
+
+with source as (
+    select * from {{ source('google_drive', 'returns') }}
+),
+
+renamed as (
+    select
+        "ORDER_ID" as order_id,
+        cast("RETURNED_AT" as date) as returned_at,
+        
+        -- convert yes/no to boolean with case-insensitive check
+        case 
+            when lower("IS_REFUNDED") = 'yes' then true 
+            else false 
+        end as is_refunded
+        
+    from source
+)
+
+select * from renamed
