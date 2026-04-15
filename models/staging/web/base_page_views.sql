@@ -1,0 +1,5 @@
+SELECT
+    SESSION_ID AS SESSION_ID,
+    PAGE_NAME AS PAGE_NAME,
+    CAST(VIEW_AT AS TIMESTAMP) AS PAGE_VIEW_AT,
+FROM {{ source('web', 'page_views') }}
