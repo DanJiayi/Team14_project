@@ -6,7 +6,6 @@ with source as (
 
 renamed as (
     select
-        "_fivetran_id" as fivetran_id,
         "ORDER_ID" as order_id,
         "SESSION_ID" as session_id,
         "CLIENT_NAME" as client_name,
