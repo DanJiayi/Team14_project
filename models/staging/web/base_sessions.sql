@@ -1,0 +1,8 @@
+SELECT
+    SESSION_ID AS SESSION_ID,
+    CLIENT_ID AS CLIENT_ID,
+    OS AS OS,
+    IP AS IP,
+    CAST(SESSION_AT AS TIMESTAMP) AS SESSION_AT,
+FROM {{ source('web', 'sessions') }}
+
