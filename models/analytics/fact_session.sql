@@ -1,5 +1,3 @@
-{{ config(materialized='table') }}
-
 select
     SESSION_ID,
     CLIENT_ID,
