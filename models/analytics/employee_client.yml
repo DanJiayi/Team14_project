@@ -1,0 +1,50 @@
+version: 2
+
+models:
+  - name: dim_employee
+    description: One row per employee, combining hire and quit information with tenure metrics.
+    columns:
+      - name: employee_id
+        description: Unique identifier of an employee.
+        tests:
+          - unique
+          - not_null
+      - name: name
+        description: Full name of the employee.
+      - name: title
+        description: Job title of the employee.
+      - name: hire_date
+        description: Date when the employee was hired.
+      - name: quit_date
+        description: Date when the employee quit. Null if still active.
+      - name: annual_salary
+        description: Annual salary of the employee.
+      - name: address
+        description: Home address of the employee.
+      - name: city
+        description: City where the employee lives.
+      - name: is_active
+        description: Whether the employee is currently active (has not quit).
+      - name: tenure_days
+        description: Number of days the employee has been with the company.
+
+  - name: dim_client
+    description: One row per client, summarizing their order history and spending.
+    columns:
+      - name: client_id
+        description: Unique identifier of a client.
+        tests:
+          - unique
+          - not_null
+      - name: client_name
+        description: Name of the client.
+      - name: first_order_at
+        description: Timestamp of the client's first order.
+      - name: last_order_at
+        description: Timestamp of the client's last order.
+      - name: total_orders
+        description: Total number of orders placed by the client.
+      - name: total_shipping_cost
+        description: Total shipping cost across all orders.
+      - name: customer_lifespan_days
+        description: Number of days between the client's first and last order.
