@@ -1,0 +1,23 @@
+version: 2
+
+models:
+  - name: fact_session
+    description: One row per session, summarizing website events for funnel analysis.
+    columns:
+      - name: SESSION_ID
+        description: Unique identifier of a session.
+        tests:
+          - unique
+          - not_null
+
+      - name: viewed_shop_page
+        description: Whether the session viewed the shop plants page.
+
+      - name: viewed_item
+        description: Whether the session viewed at least one item.
+
+      - name: added_to_cart
+        description: Whether the session added at least one item to the cart.
+
+      - name: placed_order
+        description: Whether the session placed an order.
