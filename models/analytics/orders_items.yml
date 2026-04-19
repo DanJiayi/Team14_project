@@ -1,0 +1,47 @@
+version: 2
+
+models:
+  - name: int_orders
+    description: "Intermediate model that handles de-duplication of orders and integrates refund status from the Google Drive returns source."
+    columns:
+      - name: order_id
+        description: "Primary key for orders after de-duplication based on latest order timestamp."
+        tests:
+          - unique
+          - not_null
+
+  - name: dim_item
+    description: "Dimension table containing unique product names and their corresponding unit prices."
+    columns:
+      - name: item_key
+        description: "Primary key (MD5 hash) of the item name used for joining with fact tables."
+        tests:
+          - unique
+          - not_null
+      - name: item_name
+        description: "Standardized product name."
+      - name: price_per_unit
+        description: "Unit price of the item as captured in the web source."
+
+  - name: fact_order
+    description: "Order-level fact table providing comprehensive financial metrics including gross revenue, shipping, and net income after refunds."
+    columns:
+      - name: order_id
+        description: "Primary key of the transaction."
+        tests:
+          - unique
+          - not_null
+      - name: session_id
+        description: "Link to the session during which the order was placed."
+      - name: client_id
+        description: "Reference to the unique client ID (provided by Task A)."
+        tests:
+          - not_null
+      - name: item_key
+        description: "Link to the item dimension (dim_item)."
+      - name: order_at
+        description: "The timestamp when the order was recorded."
+      - name: state
+        description: "Geographic state derived from the shipping address for regional sales analysis."
+      - name: net_order_amount
+        description: "Total order value (items + shipping) after accounting for refunds. Refunded orders are recorded as 0."
