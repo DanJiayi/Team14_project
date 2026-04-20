@@ -8,27 +8,27 @@ sources:
       - name: expenses
         config:
           freshness:
-            warn_after: {count: 1, period: day}
-            error_after: {count: 5, period: day}
-          loaded_at_field: _FIVETRAN_SYNCED
+            warn_after: {count: 7, period: day}
+            error_after: {count: 10, period: day}
+          loaded_at_field: "_FIVETRAN_SYNCED"
       - name: hr_joins
         config:
           freshness:
             warn_after: {count: 1, period: day}
             error_after: {count: 5, period: day}
-          loaded_at_field: _FIVETRAN_SYNCED
+          loaded_at_field: "_FIVETRAN_SYNCED"
       - name: hr_quits
         config:
           freshness:
             warn_after: {count: 1, period: day}
             error_after: {count: 5, period: day}
-          loaded_at_field: _FIVETRAN_SYNCED
+          loaded_at_field: "_FIVETRAN_SYNCED"
       - name: returns
         config:
           freshness:
             warn_after: {count: 1, period: day}
             error_after: {count: 5, period: day}
-          loaded_at_field: _FIVETRAN_SYNCED
+          loaded_at_field: "_FIVETRAN_SYNCED"
 
   - name: web
     database: LOAD
@@ -39,22 +39,22 @@ sources:
           freshness:
             warn_after: {count: 1, period: day}
             error_after: {count: 5, period: day}
-          loaded_at_field: _FIVETRAN_SYNCED
+          loaded_at_field: "_fivetran_synced"
       - name: page_views
         config:
           freshness:
             warn_after: {count: 1, period: day}
             error_after: {count: 5, period: day}
-          loaded_at_field: _FIVETRAN_SYNCED
+          loaded_at_field: "_fivetran_synced"
       - name: item_views
         config:
           freshness:
             warn_after: {count: 1, period: day}
             error_after: {count: 5, period: day}
-          loaded_at_field: _FIVETRAN_SYNCED
+          loaded_at_field: "_fivetran_synced"
       - name: orders
         config:
           freshness:
             warn_after: {count: 1, period: day}
             error_after: {count: 5, period: day}
-          loaded_at_field: _FIVETRAN_SYNCED
+          loaded_at_field: "_fivetran_synced"
