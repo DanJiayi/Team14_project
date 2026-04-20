@@ -19,7 +19,7 @@ returns_aggregated as (
 deduped_orders as (
     select *
     from orders
-    qualify row_number() over (partition by order_id order by order_at desc) = 1
+    qualify row_number() over (partition by order_id order by order_at asc) = 1
 ),
 
 -- Join orders with aggregated return data
