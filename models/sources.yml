@@ -6,15 +6,55 @@ sources:
     schema: GOOGLE_DRIVE
     tables:
       - name: expenses
+        config:
+          freshness:
+            warn_after: {count: 1, period: day}
+            error_after: {count: 5, period: day}
+          loaded_at_field: _FIVETRAN_SYNCED
       - name: hr_joins
+        config:
+          freshness:
+            warn_after: {count: 1, period: day}
+            error_after: {count: 5, period: day}
+          loaded_at_field: _FIVETRAN_SYNCED
       - name: hr_quits
+        config:
+          freshness:
+            warn_after: {count: 1, period: day}
+            error_after: {count: 5, period: day}
+          loaded_at_field: _FIVETRAN_SYNCED
       - name: returns
+        config:
+          freshness:
+            warn_after: {count: 1, period: day}
+            error_after: {count: 5, period: day}
+          loaded_at_field: _FIVETRAN_SYNCED
 
   - name: web
     database: LOAD
     schema: WEB_SCHEMA
     tables:
       - name: sessions
+        config:
+          freshness:
+            warn_after: {count: 1, period: day}
+            error_after: {count: 5, period: day}
+          loaded_at_field: _FIVETRAN_SYNCED
       - name: page_views
+        config:
+          freshness:
+            warn_after: {count: 1, period: day}
+            error_after: {count: 5, period: day}
+          loaded_at_field: _FIVETRAN_SYNCED
       - name: item_views
+        config:
+          freshness:
+            warn_after: {count: 1, period: day}
+            error_after: {count: 5, period: day}
+          loaded_at_field: _FIVETRAN_SYNCED
       - name: orders
+        config:
+          freshness:
+            warn_after: {count: 1, period: day}
+            error_after: {count: 5, period: day}
+          loaded_at_field: _FIVETRAN_SYNCED
