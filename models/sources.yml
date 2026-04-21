@@ -8,27 +8,27 @@ sources:
       - name: expenses
         config:
           freshness:
-            warn_after: {count: 1, period: day}
+            warn_after: {count: 3, period: day}
             error_after: {count: 5, period: day}
-          loaded_at_field: _FIVETRAN_SYNCED
+          loaded_at_field: "_FIVETRAN_SYNCED"
       - name: hr_joins
         config:
           freshness:
-            warn_after: {count: 1, period: day}
+            warn_after: {count: 3, period: day}
             error_after: {count: 5, period: day}
-          loaded_at_field: _FIVETRAN_SYNCED
+          loaded_at_field: "_FIVETRAN_SYNCED"
       - name: hr_quits
         config:
           freshness:
-            warn_after: {count: 1, period: day}
+            warn_after: {count: 3, period: day}
             error_after: {count: 5, period: day}
-          loaded_at_field: _FIVETRAN_SYNCED
+          loaded_at_field: "_FIVETRAN_SYNCED"
       - name: returns
         config:
           freshness:
-            warn_after: {count: 1, period: day}
+            warn_after: {count: 3, period: day}
             error_after: {count: 5, period: day}
-          loaded_at_field: _FIVETRAN_SYNCED
+          loaded_at_field: "_FIVETRAN_SYNCED"
 
   - name: web
     database: LOAD
@@ -37,24 +37,26 @@ sources:
       - name: sessions
         config:
           freshness:
-            warn_after: {count: 1, period: day}
+            warn_after: {count: 3, period: day}
             error_after: {count: 5, period: day}
-          loaded_at_field: _FIVETRAN_SYNCED
+          loaded_at_field: "SESSION_AT::timestamp"
       - name: page_views
         config:
           freshness:
-            warn_after: {count: 1, period: day}
+            warn_after: {count: 3, period: day}
             error_after: {count: 5, period: day}
-          loaded_at_field: _FIVETRAN_SYNCED
+          loaded_at_field: "VIEW_AT::timestamp"
       - name: item_views
         config:
           freshness:
-            warn_after: {count: 1, period: day}
+            warn_after: {count: 3, period: day}
             error_after: {count: 5, period: day}
-          loaded_at_field: _FIVETRAN_SYNCED
+          loaded_at_field: "ITEM_VIEW_AT::timestamp"
+ 
       - name: orders
         config:
           freshness:
-            warn_after: {count: 1, period: day}
+            warn_after: {count: 3, period: day}
             error_after: {count: 5, period: day}
-          loaded_at_field: _FIVETRAN_SYNCED
+          loaded_at_field: "ORDER_AT::timestamp"
+  
