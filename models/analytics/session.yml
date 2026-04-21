@@ -10,9 +10,48 @@ models:
           - unique
           - not_null
 
-      - name: viewed_shop_page
-        description: Whether the session viewed the shop plants page.
+      - name: CLIENT_ID
+        description: Unique identifier of the client associated with the session.
 
+      - name: SESSION_AT
+        description: Timestamp when the session started.
+
+      # page features
+      - name: page_view_count
+        description: Total number of page views in the session.
+
+      - name: viewed_shop_page
+        description: Whether the session viewed a shop-related page.
+
+      - name: viewed_cart_page
+        description: Whether the session viewed the cart page.
+
+      - name: viewed_faq_page
+        description: Whether the session viewed the FAQ page.
+
+      - name: viewed_plant_care_page
+        description: Whether the session viewed a plant care page.
+
+      # item features
+      - name: item_view_count
+        description: Total number of item view events in the session.
+
+      - name: distinct_items_viewed
+        description: Number of distinct items viewed in the session.
+
+      - name: add_to_cart_count
+        description: Total number of add-to-cart actions in the session.
+
+      - name: remove_from_cart_count
+        description: Total number of remove-from-cart actions in the session.
+
+      - name: removed_from_cart
+        description: Whether the session removed at least one item from the cart.
+
+      - name: order_count
+        description: Total number of orders placed in the session.
+
+      # funnel flags
       - name: viewed_item
         description: Whether the session viewed at least one item.
 
