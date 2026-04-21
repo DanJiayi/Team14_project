@@ -93,19 +93,7 @@ final as (
                 + coalesce(e.warehouse_cost, 0)
                 + coalesce(e.other_cost, 0)
             )
-        , 2) as operating_profit,
-
-        round(
-            coalesce(o.net_order_revenue, 0)
-            - (
-                coalesce(e.hr_cost, 0)
-                + coalesce(s.salary_cost, 0)
-                + coalesce(e.tech_cost, 0)
-                + coalesce(e.warehouse_cost, 0)
-                + coalesce(e.other_cost, 0)
-            )
-            - coalesce(o.tax_amount, 0)
-        , 2) as operating_profit_after_tax
+        , 2) as operating_profit
 
     from calendar c
     left join daily_order_metrics o

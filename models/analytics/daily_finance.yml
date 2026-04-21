@@ -16,7 +16,7 @@ models:
         description: Number of distinct orders placed on that date.
 
       - name: gross_item_revenue
-        description: Total revenue from items sold before shipping and taxes.
+        description: Total revenue from items sold before shipping and excluded taxes.
 
       - name: shipping_revenue
         description: Total shipping fees charged to customers.
@@ -52,10 +52,7 @@ models:
         description: Miscellaneous daily expenses not categorized elsewhere.
 
       - name: total_cost
-        description: Total daily cost including all expense categories.
+        description: Total daily cost including all five expense categories.
 
       - name: operating_profit
-        description: Profit before tax, calculated as net_order_revenue minus total_cost.
-
-      - name: operating_profit_after_tax
-        description: Profit after tax, calculated as operating_profit minus tax_amount.
+        description: Calculated as net_order_revenue minus total_cost.
