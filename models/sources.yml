@@ -39,22 +39,24 @@ sources:
           freshness:
             warn_after: {count: 3, period: day}
             error_after: {count: 5, period: day}
-          loaded_at_field: "_fivetran_synced"
+          loaded_at_field: "SESSION_AT::timestamp"
       - name: page_views
         config:
           freshness:
             warn_after: {count: 3, period: day}
             error_after: {count: 5, period: day}
-          loaded_at_field: "_fivetran_synced"
+          loaded_at_field: "VIEW_AT::timestamp"
       - name: item_views
         config:
           freshness:
             warn_after: {count: 3, period: day}
             error_after: {count: 5, period: day}
-          loaded_at_field: "_fivetran_synced"
+          loaded_at_field: "ITEM_VIEW_AT::timestamp"
+ 
       - name: orders
         config:
           freshness:
             warn_after: {count: 3, period: day}
             error_after: {count: 5, period: day}
-          loaded_at_field: "_fivetran_synced"
+          loaded_at_field: "ORDER_AT::timestamp"
+  

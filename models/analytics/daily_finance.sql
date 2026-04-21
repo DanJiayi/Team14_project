@@ -33,13 +33,13 @@ employee_spans as (
 
 calendar as (
 
-    select finance_date from daily_order_metrics
+    select cast(finance_date as date) as finance_date from daily_order_metrics
     union
-    select expense_date as finance_date from {{ ref('int_expenses') }}
+    select cast(expense_date as date) as finance_date from {{ ref('int_expenses') }}
     union
-    select hire_date as finance_date from employee_spans
+    select cast(hire_date as date) as finance_date from employee_spans
     union
-    select quit_date as finance_date from employee_spans
+    select cast(quit_date as date) as finance_date from employee_spans
 
 ),
 
@@ -76,16 +76,34 @@ final as (
         round(coalesce(e.warehouse_cost, 0), 2) as warehouse_cost,
         round(coalesce(e.other_cost, 0), 2) as other_cost,
 
-        round(coalesce(e.total_expense, 0), 2) as total_cost,
+        round(
+            coalesce(e.hr_cost, 0)
+            + coalesce(s.salary_cost, 0)
+            + coalesce(e.tech_cost, 0)
+            + coalesce(e.warehouse_cost, 0)
+            + coalesce(e.other_cost, 0)
+        , 2) as total_cost,
 
         round(
             coalesce(o.net_order_revenue, 0)
-            - coalesce(e.total_expense, 0)
+            - (
+                coalesce(e.hr_cost, 0)
+                + coalesce(s.salary_cost, 0)
+                + coalesce(e.tech_cost, 0)
+                + coalesce(e.warehouse_cost, 0)
+                + coalesce(e.other_cost, 0)
+            )
         , 2) as operating_profit,
 
         round(
             coalesce(o.net_order_revenue, 0)
-            - coalesce(e.total_expense, 0)
+            - (
+                coalesce(e.hr_cost, 0)
+                + coalesce(s.salary_cost, 0)
+                + coalesce(e.tech_cost, 0)
+                + coalesce(e.warehouse_cost, 0)
+                + coalesce(e.other_cost, 0)
+            )
             - coalesce(o.tax_amount, 0)
         , 2) as operating_profit_after_tax
 
@@ -101,4 +119,4 @@ final as (
 
 select *
 from final
-order by cast(finance_date as date) asc
+order by finance_date asc
