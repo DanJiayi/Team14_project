@@ -9,7 +9,7 @@ order_item_revenue as (
     select
         session_id,
         any_value(item_name) as primary_item_name,
-        sum(add_to_cart_quantity * price_per_unit) as total_item_revenue
+        sum((add_to_cart_quantity - remove_from_cart_quantity) * price_per_unit) as total_item_revenue
     from {{ ref('base_item_views') }}
     group by 1
 ),
