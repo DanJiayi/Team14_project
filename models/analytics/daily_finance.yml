@@ -1,0 +1,61 @@
+version: 2
+
+models:
+  - name: daily_finance
+    description: Daily level financial summary combining order revenue, refunds, taxes, operating costs, 
+      and profit metrics. Each row represents one calendar date.
+
+    columns:
+      - name: finance_date
+        description: Calendar date for the financial metrics.
+        tests:
+          - unique
+          - not_null
+
+      - name: order_count
+        description: Number of distinct orders placed on that date.
+
+      - name: gross_item_revenue
+        description: Total revenue from items sold before shipping and taxes.
+
+      - name: shipping_revenue
+        description: Total shipping fees charged to customers.
+
+      - name: gross_order_revenue
+        description: Total order value including item revenue and shipping.
+
+      - name: refund_amount
+        description: Total value of refunded orders on that date.
+
+      - name: refunded_order_count
+        description: Number of orders that were refunded.
+
+      - name: net_order_revenue
+        description: Net revenue after accounting for refunds (refunded orders set to zero).
+
+      - name: tax_amount
+        description: Total estimated tax calculated as gross_item_revenue multiplied by tax_rate.
+
+      - name: hr_cost
+        description: Daily HR-related expenses (external or variable HR costs).
+
+      - name: salary_cost
+        description: Allocated daily salary cost for active employees based on annual salary.
+
+      - name: tech_cost
+        description: Daily technology-related expenses.
+
+      - name: warehouse_cost
+        description: Daily warehouse-related expenses.
+
+      - name: other_cost
+        description: Miscellaneous daily expenses not categorized elsewhere.
+
+      - name: total_cost
+        description: Total daily cost including all expense categories.
+
+      - name: operating_profit
+        description: Profit before tax, calculated as net_order_revenue minus total_cost.
+
+      - name: operating_profit_after_tax
+        description: Profit after tax, calculated as operating_profit minus tax_amount.
